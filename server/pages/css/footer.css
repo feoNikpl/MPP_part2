@@ -1,0 +1,47 @@
+footer{
+	padding: 30px 0;
+	background-color: black;
+}
+
+.footer_info, .e-mail {
+	color: white;
+	display: flex;
+	justify-content: space-around;
+	align-items: center; 
+	padding:  20px 0;
+}
+
+.e-mail {
+	justify-content: center;
+}
+
+.subscribe{
+	color: white;
+	background: black;
+	border-color: goldenrod;
+	border-radius: 40px;
+	outline: none;
+}
+
+
+.footer{
+	color: white;
+	font-weight: 700;
+	align-items: center;
+	padding-right: 5%;
+}
+
+.f_link{
+    display: inline-block;
+	margin: 0 10px;
+	position: relative;
+	
+	opacity: 0.4;
+	color: white;
+    text-decoration: none;
+	transition: color .1s linear;
+}
+
+.f_link:hover {
+    opacity: 1;
+}

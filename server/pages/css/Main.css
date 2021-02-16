@@ -1,0 +1,22 @@
+
+/* MAIN INFO*/
+.main_intro{
+	background: url(images/alps.png);
+	background-size: cover;
+    background-position:50%;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    display: block;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+
+.main_text{
+	padding-top: 280px ;
+	font-size: 80px;
+}
+.main_intro:hover{
+	opacity: 0.5;
+}
+

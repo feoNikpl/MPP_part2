@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		{{>head}}
+    </head>
+    <body>
+		{{>header}}
+		<main>
+			<div class="container">
+				<table id="table">
+					<tr><th onclick="sortTable(0)">Name</th>
+					<th onclick="sortTable(1)">Destination</th>
+					<th onclick="sortTable(2)">Date</th>
+					<th>Attached file</th><th>Complete</th>
+					<th>Delete</th></tr>
+					{{#each journeys}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>{{this.destination}}</td>
+							<td>{{this.niceDate}}</td>
+							<td><a href="/download/{{this.filename}}">{{this.filename}}</a></td>
+							<td>
+								<form action="update/{{this.id}}/{{this.pass}}" method="POST" style="display:inline;">
+									{{#if this.pass}}
+										<input type="radio" checked disabled>
+									{{else}}
+										<input type="radio" disabled>
+									{{/if}}
+									<input class="subscribe" type="submit" value="Passed"/>
+								</form>
+							</td>
+							<td>
+								<form action="delete/{{this.id}}" method="POST" style="display:inline;">
+									<input class="subscribe" type="submit" value="Delete" />
+								</form>
+							</td>
+						</tr>
+					{{/each}}
+    			</table>	
+			</div>
+		</main>
+		{{>footer}}
+		<script>
+		function sortTable(compare) {
+		var table, rows, switching, i, x, y, shouldSwitch;
+		table = document.getElementById("table");
+		switching = true;
+		while (switching) {
+			switching = false;
+			rows = table.getElementsByTagName("TR");
+			for (i = 1; i < (rows.length - 1); i++) {
+			shouldSwitch = false;
+			x = rows[i].getElementsByTagName("TD")[compare];
+			y = rows[i + 1].getElementsByTagName("TD")[compare];
+			if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+				shouldSwitch = true;
+				break;
+			}
+			}
+			if (shouldSwitch) {
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+			}
+		}
+		}
+		</script>
+    </body>
+</html>

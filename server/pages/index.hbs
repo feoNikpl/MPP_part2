@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{>head}}
+    </head>
+    <body>
+        {{>header}}
+		<main>
+			<a class="main_intro"  href="/content" >
+				<div class="main_text">Основной контент</div>
+			</a>
+			<div class="container">
+				<form action="/create" method="post" enctype="multipart/form-data">
+					<input type="text" name="name" placeholder="Фамилия И.О." pattern="[A-ZА-Я][a-zа-я]+\s[A-ZА-Я]\.[A-ZА-Я]\." required><br><br>
+					<input type="text" name="destination" placeholder="страна назначения" required><br><br>
+					Выберите дату: <input type="date" name="date" required><br><br>
+					<input type="file" name="file" placeholder="выберите файл"><br><br>
+					<button class="subscribe">отправить</button>
+				</form>
+        	</div>
+		</main>
+        {{>footer}}
+    </body>
+</html>
