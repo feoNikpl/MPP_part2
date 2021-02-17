@@ -1,6 +1,6 @@
 const path = require('path');
-const database = require("../database/database")
-const Journey = require("../models/journeys.js")
+const database = require("../database/database");
+const Journey = require("../models/journeys.js");
 
 exports.addJourney = async function(request, response) {
     if(!request.body) return response.sendStatus(400);
@@ -8,9 +8,9 @@ exports.addJourney = async function(request, response) {
     const journey = new Journey(request.body.name, request.body.destination, request.body.date, (filedata === undefined) ? '' : filedata.filename);
     database.query(journey.addJourney(), function (error, result){
         if(error) return console.log(error.message)
+        response.redirect("/content");
     });
-    response.redirect("/content");
-}
+};
 
 exports.showContent = async function(request, response) {
     database.query(Journey.getAllJourneys(),function(error, result) {
@@ -19,7 +19,7 @@ exports.showContent = async function(request, response) {
             journeys: result
         });
     });
-}
+};
 
 exports.deleteJourney = async function(request, response){         
     const id = request.params.id;
@@ -51,4 +51,4 @@ exports.sendFile = async function(request, response){
 
 exports.showIndex = async function(request, response) {
     response.render(path.join(__dirname, "../pages/index.hbs"));
-}
+};
